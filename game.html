@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>게임 상세 — 🎮 GamePick</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">🎮 GamePick</a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">홈</a>
+        <a href="search.html" class="nav-link">검색</a>
+        <a href="top.html" class="nav-link">TOP 100</a>
+      </nav>
+    </div>
+  </header>
+
+  <div id="gameDetail">
+    <div class="detail-loading">
+      <div class="spinner"></div>
+      <p>게임 정보를 불러오는 중...</p>
+    </div>
+  </div>
+
+  <section class="section section-dark" id="similarSection" style="display:none">
+    <div class="container">
+      <h2 class="section-title">비슷한 게임</h2>
+      <div class="game-grid" id="similarGames"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>🎮 GamePick &nbsp;|&nbsp; 데이터 제공: <a href="https://rawg.io" target="_blank">RAWG.io</a></p>
+    </div>
+  </footer>
+
+  <script src="api.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

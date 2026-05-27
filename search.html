@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>검색 — 🎮 GamePick</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">🎮 GamePick</a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">홈</a>
+        <a href="search.html" class="nav-link active">검색</a>
+        <a href="top.html" class="nav-link">TOP 100</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>게임 검색</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- 검색 바 -->
+      <form class="search-bar" id="searchForm">
+        <input type="text" id="searchInput" placeholder="게임 제목으로 검색..." autocomplete="off" />
+        <button type="submit">🔍 검색</button>
+      </form>
+
+      <!-- 필터 -->
+      <div class="filters">
+        <div class="filter-group">
+          <label>장르</label>
+          <select id="filterGenre">
+            <option value="">전체</option>
+            <option value="action">액션</option>
+            <option value="rpg">RPG</option>
+            <option value="strategy">전략</option>
+            <option value="shooter">슈터</option>
+            <option value="adventure">어드벤처</option>
+            <option value="puzzle">퍼즐</option>
+            <option value="sports">스포츠</option>
+            <option value="racing">레이싱</option>
+            <option value="simulation">시뮬레이션</option>
+            <option value="indie">인디</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>플랫폼</label>
+          <select id="filterPlatform">
+            <option value="">전체</option>
+            <option value="4">PC (Windows)</option>
+            <option value="187">PS5</option>
+            <option value="18">PS4</option>
+            <option value="1">Xbox One</option>
+            <option value="7">Nintendo Switch</option>
+            <option value="3">iOS</option>
+            <option value="21">Android</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>정렬</label>
+          <select id="filterSort">
+            <option value="-rating">평점 높은 순</option>
+            <option value="-released">최신순</option>
+            <option value="-added">인기순</option>
+            <option value="name">이름순</option>
+          </select>
+        </div>
+        <button class="btn-filter" id="applyFilter">적용</button>
+      </div>
+
+      <!-- 결과 수 -->
+      <p class="result-count" id="resultCount"></p>
+
+      <!-- 게임 그리드 -->
+      <div class="game-grid" id="searchResults">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+
+      <!-- 더 보기 -->
+      <div class="load-more-wrap" id="loadMoreWrap" style="display:none">
+        <button class="btn-load-more" id="loadMoreBtn">더 보기</button>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>🎮 GamePick &nbsp;|&nbsp; 데이터 제공: <a href="https://rawg.io" target="_blank">RAWG.io</a></p>
+    </div>
+  </footer>
+
+  <script src="api.js"></script>
+  <script src="search.js"></script>
+</body>
+</html>
