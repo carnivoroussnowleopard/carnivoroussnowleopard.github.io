@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎮 GamePick — 게임 추천 사이트</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">🎮 GamePick</a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link active">홈</a>
+        <a href="search.html" class="nav-link">검색</a>
+        <a href="top.html" class="nav-link">TOP 100</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 히어로 -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">당신을 위한<br /><span class="accent">최고의 게임</span>을 찾아드립니다</h1>
+      <p class="hero-sub">장르, 플랫폼, 평점으로 원하는 게임을 쉽게 발견하세요</p>
+      <form class="hero-search" id="heroSearchForm">
+        <input type="text" id="heroSearchInput" placeholder="게임 이름을 입력하세요..." autocomplete="off" />
+        <button type="submit">검색</button>
+      </form>
+    </div>
+    <div class="hero-bg-shapes">
+      <div class="shape s1"></div>
+      <div class="shape s2"></div>
+      <div class="shape s3"></div>
+    </div>
+  </section>
+
+  <!-- 장르 필터 -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">장르별 탐색</h2>
+      <div class="genre-grid" id="genreGrid">
+        <!-- JS로 생성 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 인기 게임 -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">🔥 지금 인기있는 게임</h2>
+        <a href="top.html" class="see-all">전체 보기 →</a>
+      </div>
+      <div class="game-grid" id="popularGames">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 최신 게임 -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">🆕 최신 게임</h2>
+        <a href="search.html?sort=-released" class="see-all">전체 보기 →</a>
+      </div>
+      <div class="game-grid" id="newGames">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer class="footer">
+    <div class="container">
+      <p>🎮 GamePick &nbsp;|&nbsp; 데이터 제공: <a href="https://rawg.io" target="_blank">RAWG.io</a></p>
+      <p class="footer-sub">대학과제 프로젝트 — 개인 비상업적 이용 목적</p>
+    </div>
+  </footer>
+
+  <script src="api.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
