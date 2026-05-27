@@ -8,7 +8,7 @@
  *   무료 API 키를 발급받아 교체하세요.
  */
 
-const API_KEY = 'f0b0f7cd96954a1b9035f6eb62fd5f63'; // RAWG 무료 키 (직접 발급 권장)
+const API_KEY = '5a84526a68114dacae7f5bfb18d1ecb9';
 const BASE    = 'https://api.rawg.io/api';
 
 /**
