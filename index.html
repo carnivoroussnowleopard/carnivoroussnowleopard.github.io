@@ -13,11 +13,17 @@
   <header class="header">
     <div class="header-inner">
       <a href="index.html" class="logo">🎮 GamePick</a>
-      <nav class="nav">
-        <a href="index.html" class="nav-link active">홈</a>
-        <a href="search.html" class="nav-link">검색</a>
-        <a href="top.html" class="nav-link">TOP 100</a>
-      </nav>
+      <div class="header-right">
+        <nav class="nav">
+          <a href="index.html" class="nav-link active">홈</a>
+          <a href="search.html" class="nav-link">검색</a>
+          <a href="top.html" class="nav-link">TOP 100</a>
+        </nav>
+        <div class="translate-wrap" title="언어 번역">
+          <span class="translate-icon">🌐</span>
+          <div id="google_translate_element"></div>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -94,5 +100,6 @@
 
   <script src="api.js"></script>
   <script src="main.js"></script>
+  <script src="translate.js"></script>
 </body>
 </html>

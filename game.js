@@ -8,9 +8,10 @@ async function loadGameDetail() {
   const container = document.getElementById('gameDetail');
 
   try {
-    const [game, shots] = await Promise.all([
+    const [game, shots, stores] = await Promise.all([
       fetchGame(gameId),
       fetchScreenshots(gameId),
+      fetchStores(gameId),
     ]);
 
     document.title = `${game.name} — 🎮 GamePick`;
@@ -51,6 +52,29 @@ async function loadGameDetail() {
       .slice(0, 8)
       .map(t => `<span class="genre-tag">${t.name}</span>`)
       .join('');
+
+    // ─── 구매처(스토어) 버튼 ─────────────────────────
+    const storeButtons = (stores.results || [])
+      .map(s => {
+        const info = STORE_INFO[s.store_id];
+        if (!info || !s.url) return '';
+        return `
+          <a class="store-btn" href="${s.url}" target="_blank" rel="noopener"
+             style="--store-color:${info.color}">
+            <span class="store-icon">${info.icon}</span>
+            <span class="store-name">${info.name}</span>
+            <span class="store-arrow">↗</span>
+          </a>`;
+      })
+      .filter(Boolean)
+      .join('');
+
+    const storeSection = storeButtons
+      ? `<div class="store-card">
+           <h3 class="store-card-title">🛒 구매 / 다운로드</h3>
+           <div class="store-list">${storeButtons}</div>
+         </div>`
+      : '';
 
     const heroImg = game.background_image || '';
 
@@ -116,6 +140,8 @@ async function loadGameDetail() {
               <span class="info-value">${game.playtime}시간</span>
             </div>` : ''}
           </div>
+
+          ${storeSection}
 
           <a href="search.html?genre=${(game.genres || [])[0]?.slug || ''}"
              class="btn-filter" style="display:block;text-align:center;border-radius:var(--radius)">

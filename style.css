@@ -68,6 +68,8 @@ img { display: block; width: 100%; }
   background-clip: text;
 }
 
+.header-right { display: flex; align-items: center; gap: 16px; }
+
 .nav { display: flex; gap: 8px; }
 
 .nav-link {
@@ -84,6 +86,47 @@ img { display: block; width: 100%; }
 }
 
 .nav-link.active { color: var(--accent2); }
+
+/* ─── Google Translate 위젯 ─── */
+.translate-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  transition: border-color 0.2s;
+}
+.translate-wrap:hover { border-color: var(--accent); }
+.translate-icon { font-size: 0.95rem; line-height: 1; }
+
+/* 구글 번역 기본 스타일 오버라이드 */
+#google_translate_element { display: inline-flex; align-items: center; }
+.goog-te-gadget {
+  font-size: 0 !important;
+  color: transparent !important;
+  font-family: 'Noto Sans KR', sans-serif !important;
+}
+.goog-te-gadget .goog-te-combo {
+  margin: 0 !important;
+  padding: 3px 6px;
+  background: transparent;
+  color: var(--text);
+  border: none;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+  outline: none;
+}
+.goog-te-gadget .goog-te-combo option { color: #000; }
+
+/* 구글 번역 상단 배너 숨기기 */
+.goog-te-banner-frame, .skiptranslate { display: none !important; }
+body { top: 0 !important; }
+.goog-tooltip, .goog-tooltip:hover { display: none !important; }
+.goog-text-highlight { background: none !important; box-shadow: none !important; }
 
 /* =============================================
    Hero
@@ -188,6 +231,20 @@ img { display: block; width: 100%; }
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 28px;
+  position: relative;
+  padding-left: 14px;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 0.85em;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--accent), var(--accent2));
 }
 
 .section-header .section-title { margin-bottom: 0; }
@@ -688,6 +745,47 @@ img { display: block; width: 100%; }
   text-align: right;
 }
 
+/* ─── 구매처(스토어) 카드 ─── */
+.store-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.store-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.store-list { display: flex; flex-direction: column; gap: 8px; }
+
+.store-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--store-color, var(--accent));
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.18s;
+}
+
+.store-btn:hover {
+  background: var(--card-hover);
+  border-color: var(--accent);
+  transform: translateX(3px);
+}
+
+.store-icon { font-size: 1.05rem; }
+.store-name { flex: 1; }
+.store-arrow { color: var(--text2); font-size: 0.85rem; }
+
 .screenshots-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -730,4 +828,57 @@ img { display: block; width: 100%; }
   .section { padding: 40px 16px; }
   .detail-hero-content { padding: 20px 16px; }
   .top-img { display: none; }
+}
+
+@media (max-width: 768px) {
+  .header-inner { padding: 0 16px; }
+  .header-right { gap: 8px; }
+  .nav-link { padding: 6px 10px; font-size: 0.82rem; }
+  .translate-wrap { padding: 4px 8px; }
+}
+
+/* =============================================
+   Polish — 애니메이션 & 스크롤바
+   ============================================= */
+
+/* 카드 등장 애니메이션 */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.game-card, .top-item, .genre-card {
+  animation: fadeUp 0.45s ease both;
+}
+
+/* 게임 카드 이미지 위 그라데이션 (가독성) */
+.game-card-img { position: relative; }
+.game-card-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(15,15,19,0.35) 100%);
+  pointer-events: none;
+}
+
+/* 커스텀 스크롤바 */
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb {
+  background: var(--bg3);
+  border: 3px solid var(--bg2);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* 텍스트 선택 색상 */
+::selection { background: var(--accent); color: #fff; }
+
+/* 모션 최소화 선호 사용자 배려 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
