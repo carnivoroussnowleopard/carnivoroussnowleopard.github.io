@@ -49,6 +49,32 @@ async function fetchScreenshots(id) {
   return res.json();
 }
 
+/**
+ * GET /games/{id}/stores
+ * 게임을 구매/다운로드할 수 있는 스토어 링크 목록
+ */
+async function fetchStores(id) {
+  const url = new URL(`${BASE}/games/${id}/stores`);
+  url.searchParams.set('key', API_KEY);
+  const res = await fetch(url.toString());
+  if (!res.ok) return { results: [] };
+  return res.json();
+}
+
+/** 스토어 ID → 표시 정보 (이름, 아이콘, 색상) */
+const STORE_INFO = {
+  1: { name: 'Steam',            icon: '🎮', color: '#1b2838' },
+  2: { name: 'Xbox Store',       icon: '🟢', color: '#107c10' },
+  3: { name: 'PlayStation Store',icon: '🔵', color: '#003791' },
+  4: { name: 'App Store',        icon: '🍎', color: '#0d6efd' },
+  5: { name: 'GOG',              icon: '🟣', color: '#86328a' },
+  6: { name: 'Nintendo Store',   icon: '🔴', color: '#e60012' },
+  7: { name: 'Xbox 360 Store',   icon: '🟢', color: '#107c10' },
+  8: { name: 'Google Play',      icon: '▶️', color: '#01875f' },
+  9: { name: 'itch.io',          icon: '🎨', color: '#fa5c5c' },
+  11:{ name: 'Epic Games',       icon: '🛒', color: '#2a2a2a' },
+};
+
 // ─── 유틸 ────────────────────────────────────────────
 
 /** 평점 색 클래스 */
