@@ -1,25 +1,19 @@
+# GamePick — Netlify 설정
+# 여러 개의 정적 HTML 페이지로 이루어진 멀티페이지 사이트입니다.
+# (SPA가 아니므로 "/* -> index.html" 같은 catch-all 리다이렉트를 쓰면 안 됩니다.)
+
 [build]
   publish = "."
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
+# 보안 헤더 (모든 페이지)
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
+# HTML은 항상 최신 버전을 받도록 캐시하지 않음
 [[headers]]
-  for = "/*.js"
+  for = "/*.html"
   [headers.values]
-    Cache-Control = "public, max-age=3600"
-
-[[headers]]
-  for = "/*.css"
-  [headers.values]
-    Cache-Control = "public, max-age=3600"
+    Cache-Control = "public, max-age=0, must-revalidate"
